@@ -36,8 +36,8 @@ public class App {
         this.codigoUni=instancias++;
         this.nombre = "app" + codigoUni + RandomStringUtils.randomAlphabetic(1);
         this.descripcion = generarStringAleatorio();
-        this.tamanioKb = doubleStreamGenerator().max().getAsDouble();//para tener el value double del Stream
-        this.numeroDescargas = intStreamGenerator().max().getAsInt();//para tener el value double del Stream
+        this.tamanioKb = doubleStreamGenerator().findFirst().getAsDouble();//para tener el value double del Stream
+        this.numeroDescargas = intStreamGenerator().findFirst().getAsInt();//para tener el value double del Stream
     }
 
     public App(String nombre, String descripcion, double tamanioKb, int numeroDescargas) {
@@ -102,11 +102,11 @@ public class App {
     }
 
     public static DoubleStream doubleStreamGenerator(){
-       return rd.doubles(1, 100.0, 1024.0);  
+       return rd.doubles(1, 100.0, 1024.1);  
     }
 
     public static IntStream intStreamGenerator() {
-       return rd.ints(1, 0, 50000);
+       return rd.ints(1, 0, 50001);
     }
 
 }
